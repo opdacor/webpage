@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opdacor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C8102E;
+  --red-dark:#a50d25;
+  --black:#111111;
+  --white:#FFFFFF;
+  --off:#F7F6F3;
+  --gray:#F0EFEB;
+  --muted:#777;
+  --border:rgba(0,0,0,0.08);
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:var(--font-body);font-weight:300;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 3rem;
+  border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(14px);
+}
+.logo-img{height:44px;width:auto;display:block}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--black)}
+.nav-cta{
+  background:var(--red);color:#fff;border:none;
+  padding:0.55rem 1.4rem;font-family:var(--font-body);font-size:0.82rem;
+  letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
+  transition:background .2s;
+}
+.nav-cta:hover{background:var(--red-dark)}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 3rem 5rem;
+  position:relative;
+  overflow:hidden;
+  background:var(--white);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200,16,46,0.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-line{
+  position:absolute;top:0;right:15%;
+  width:1px;height:100%;
+  background:linear-gradient(to bottom, transparent 0%, rgba(200,16,46,0.25) 40%, transparent 100%);
+}
+.hero-number{
+  position:absolute;top:50%;right:3rem;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(120px,18vw,240px);
+  color:rgba(0,0,0,0.03);line-height:1;user-select:none;
+}
+.hero-logo{
+  position:relative;
+  margin-bottom:2.5rem;
+  animation:fadeUp .7s ease both;
+}
+.hero-logo img{height:72px;width:auto}
+.hero-eyebrow{
+  position:relative;
+  font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:0.8rem;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--red)}
+.hero-title{
+  position:relative;
+  font-family:var(--font-display);
+  font-size:clamp(56px,9vw,130px);
+  line-height:0.92;letter-spacing:2px;
+  color:var(--black);
+  max-width:70%;
+  animation:fadeUp .9s ease both;
+}
+.hero-title span{color:var(--red)}
+.hero-sub{
+  position:relative;
+  max-width:420px;
+  color:var(--muted);
+  font-size:1rem;line-height:1.7;
+  margin-top:2rem;
+  animation:fadeUp .9s .15s ease both;
+}
+.hero-actions{
+  position:relative;
+  display:flex;gap:1.2rem;align-items:center;
+  margin-top:2.5rem;
+  animation:fadeUp .9s .3s ease both;
+}
+.btn-primary{
+  background:var(--red);color:#fff;border:none;
+  padding:0.85rem 2rem;font-family:var(--font-body);
+  font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:background .2s;
+}
+.btn-primary:hover{background:var(--red-dark)}
+.btn-ghost{
+  background:transparent;color:var(--black);
+  border:1px solid rgba(0,0,0,0.2);
+  padding:0.85rem 2rem;font-family:var(--font-body);
+  font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:border-color .2s;
+}
+.btn-ghost:hover{border-color:var(--black)}
+
+/* STRIP */
+.strip{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:1rem 3rem;
+  display:flex;gap:3rem;align-items:center;
+  overflow:hidden;
+  background:var(--gray);
+}
+.strip-item{
+  white-space:nowrap;font-size:0.75rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:0.6rem;
+}
+.strip-item::before{content:'—';color:var(--red)}
+
+/* ABOUT */
+.about{
+  display:grid;grid-template-columns:1fr 1fr;
+  padding:7rem 3rem;gap:5rem;
+  border-bottom:1px solid var(--border);
+  background:var(--white);
+}
+.section-label{
+  font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.section-label::before{content:'';width:20px;height:1px;background:var(--red)}
+.about-title{
+  font-family:var(--font-display);
+  font-size:clamp(36px,5vw,64px);
+  line-height:1;letter-spacing:1px;
+  color:var(--black);
+}
+.about-title em{font-style:normal;color:var(--red)}
+.about-right{
+  display:flex;flex-direction:column;justify-content:center;gap:2rem;
+  padding-top:1rem;
+}
+.about-text{color:#555;font-size:1rem;line-height:1.8}
+.about-stat{display:flex;align-items:flex-end;gap:0.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+.stat-num{font-family:var(--font-display);font-size:52px;color:var(--black);line-height:1}
+.stat-label{font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;padding-bottom:6px}
+
+/* SERVICES */
+.services{padding:7rem 3rem;border-bottom:1px solid var(--border);background:var(--off)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.services-title{font-family:var(--font-display);font-size:clamp(36px,4.5vw,58px);letter-spacing:1px;color:var(--black)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.service-card{
+  background:var(--white);
+  padding:2.5rem;
+  transition:background .3s;
+  position:relative;overflow:hidden;
+}
+.service-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.service-card:hover{background:var(--gray)}
+.service-card:hover::after{transform:scaleX(1)}
+.service-num{
+  font-family:var(--font-display);font-size:48px;
+  color:rgba(200,16,46,0.15);margin-bottom:1.5rem;
+}
+.service-title{font-size:1.1rem;font-weight:400;margin-bottom:0.8rem;letter-spacing:0.02em;color:var(--black)}
+.service-desc{font-size:0.88rem;color:var(--muted);line-height:1.7}
+
+/* CTA SECTION */
+.cta-section{
+  padding:7rem 3rem;
+  display:grid;grid-template-columns:1.5fr 1fr;
+  gap:4rem;align-items:center;
+  background:var(--gray);
+  border-bottom:1px solid var(--border);
+}
+.cta-title{font-family:var(--font-display);font-size:clamp(42px,6vw,80px);line-height:0.95;letter-spacing:1px;color:var(--black)}
+.cta-title span{color:var(--red)}
+.cta-right{display:flex;flex-direction:column;gap:2rem}
+.cta-text{color:#555;font-size:0.95rem;line-height:1.8}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,
+.contact-form textarea{
+  background:var(--white);
+  border:1px solid var(--border);
+  color:var(--black);padding:0.85rem 1rem;
+  font-family:var(--font-body);font-size:0.9rem;
+  outline:none;transition:border-color .2s;resize:none;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{color:#bbb}
+.contact-form input:focus,
+.contact-form textarea:focus{border-color:var(--red)}
+
+/* FOOTER */
+footer{
+  padding:2.5rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--border);
+  background:var(--white);
+}
+.footer-logo img{height:28px;width:auto;opacity:0.6}
+.footer-copy{font-size:0.75rem;color:#bbb;letter-spacing:0.05em}
+.footer-dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <!-- Reemplaza la ruta del src con la ubicación real de tu logo -->
+  <img class="logo-img" src="logo.png" alt="Opdacor">
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta">Contactar</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-number">O</div>
+  <div class="hero-logo">
+    <!-- Reemplaza la ruta del src con la ubicación real de tu logo -->
+    <img src="logo.png" alt="Opdacor">
+  </div>
+  <p class="hero-eyebrow">Servicios profesionales</p>
+  <h1 class="hero-title">Soluciones<br>que <span>transforman</span><br>tu negocio</h1>
+  <p class="hero-sub">Opdacor ofrece servicios especializados con enfoque estratégico, rigor técnico y resultados medibles.</p>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablemos</button>
+    <button class="btn-ghost" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">Calidad comprobada</div>
+  <div class="strip-item">Enfoque estratégico</div>
+  <div class="strip-item">Equipo experto</div>
+  <div class="strip-item">Resultados medibles</div>
+  <div class="strip-item">Atención personalizada</div>
+  <div class="strip-item">Compromiso total</div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="nosotros">
+  <div class="about-left reveal">
+    <div class="section-label">Quiénes somos</div>
+    <h2 class="about-title">Precisión.<br>Estrategia.<br><em>Resultado.</em></h2>
+  </div>
+  <div class="about-right reveal">
+    <p class="about-text">En Opdacor combinamos experiencia sectorial con metodologías ágiles para entregar soluciones que generan impacto real. Nuestro equipo trabaja como una extensión de tu empresa.</p>
+    <div style="display:flex;gap:2.5rem">
+      <div class="about-stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Años de<br>experiencia</span>
+      </div>
+      <div class="about-stat">
+        <span class="stat-num">150</span>
+        <span class="stat-label">Proyectos<br>completados</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="services-header reveal">
+    <h2 class="services-title">Nuestros<br>servicios</h2>
+    <div class="section-label" style="margin:0">Lo que hacemos</div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-title">Consultoría estratégica</div>
+      <p class="service-desc">Diagnóstico profundo y hoja de ruta para hacer crecer tu organización con claridad y dirección.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-title">Optimización de procesos</div>
+      <p class="service-desc">Identificamos ineficiencias y rediseñamos flujos para maximizar productividad y reducir costos.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-title">Transformación digital</div>
+      <p class="service-desc">Implementamos herramientas y culturas digitales que posicionan a tu empresa en el futuro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACTO -->
+<section class="cta-section" id="contacto">
+  <div class="reveal">
+    <h2 class="cta-title">¿Listo para <span>crecer</span> juntos?</h2>
+  </div>
+  <div class="cta-right reveal">
+    <p class="cta-text">Cuéntanos sobre tu proyecto. Te respondemos en menos de 24 horas.</p>
+    <div class="contact-form">
+      <input type="text" placeholder="Tu nombre">
+      <input type="email" placeholder="Correo electrónico">
+      <textarea rows="3" placeholder="¿En qué podemos ayudarte?"></textarea>
+      <button class="btn-primary" style="align-self:flex-start">Enviar mensaje</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <!-- Reemplaza la ruta del src con la ubicación real de tu logo -->
+    <img src="logo.png" alt="Opdacor">
+  </div>
+  <div class="footer-dot"></div>
+  <span class="footer-copy">© 2025 Opdacor — Todos los derechos reservados</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') })
+}, {threshold:0.15})
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+</script>
+
+</body>
+</html>
