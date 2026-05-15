@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opdacor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C8102E;
+  --black:#0A0A0A;
+  --white:#F5F4F0;
+  --gray:#1A1A1A;
+  --muted:#888;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-weight:300;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 3rem;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  background:rgba(10,10,10,0.85);
+  backdrop-filter:blur(12px);
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:0.75rem}
+
+.logo-image{
+  height: 56px;
+  width:auto;
+  display:block;
+  object-fit:contain;
+}
+.logo-box{
+  width:36px;height:36px;
+  background:var(--red);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:18px;color:#fff;letter-spacing:1px;
+}
+.brand{font-family:var(--font-display);font-size:22px;letter-spacing:3px;color:var(--white)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{
+  background:var(--red);color:#fff;border:none;
+  padding:0.55rem 1.4rem;font-family:var(--font-body);font-size:0.82rem;
+  letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
+  transition:background .2s;
+}
+.nav-cta:hover{background:#a50d25}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 3rem 5rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200,16,46,0.12) 0%, transparent 70%),
+    var(--black);
+}
+.hero-line{
+  position:absolute;top:0;right:15%;
+  width:1px;height:100%;
+  background:linear-gradient(to bottom, transparent 0%, rgba(200,16,46,0.4) 40%, transparent 100%);
+}
+.hero-number{
+  position:absolute;top:50%;right:3rem;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(120px,18vw,240px);
+  color:rgba(255,255,255,0.03);line-height:1;user-select:none;
+}
+.hero-eyebrow{
+  position:relative;
+  font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:0.8rem;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--red)}
+.hero-title{
+  position:relative;
+  font-family:var(--font-display);
+  font-size:clamp(56px,9vw,130px);
+  line-height:0.92;letter-spacing:2px;
+  max-width:70%;
+  animation:fadeUp .9s ease both;
+}
+.hero-title span{color:var(--red)}
+.hero-sub{
+  position:relative;
+  max-width:420px;
+  color:var(--muted);
+  font-size:1rem;line-height:1.7;
+  margin-top:2rem;
+  animation:fadeUp .9s .15s ease both;
+}
+.hero-actions{
+  position:relative;
+  display:flex;gap:1.2rem;align-items:center;
+  margin-top:2.5rem;
+  animation:fadeUp .9s .3s ease both;
+}
+.btn-primary{
+  background:var(--red);color:#fff;border:none;
+  padding:0.85rem 2rem;font-family:var(--font-body);
+  font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:background .2s;
+}
+.btn-primary:hover{background:#a50d25}
+.btn-ghost{
+  background:transparent;color:var(--white);
+  border:1px solid rgba(255,255,255,0.2);
+  padding:0.85rem 2rem;font-family:var(--font-body);
+  font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:border-color .2s,color .2s;
+}
+.btn-ghost:hover{border-color:var(--white)}
+
+/* STRIP */
+.strip{
+  border-top:1px solid rgba(255,255,255,0.08);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:1rem 3rem;
+  display:flex;gap:3rem;align-items:center;
+  overflow:hidden;
+  background:var(--gray);
+}
+.strip-item{
+  white-space:nowrap;font-size:0.75rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:0.6rem;
+}
+.strip-item::before{content:'—';color:var(--red)}
+
+/* ABOUT */
+.about{
+  display:grid;grid-template-columns:1fr 1fr;
+  padding:7rem 3rem;gap:5rem;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.about-left{}
+.section-label{
+  font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.section-label::before{content:'';width:20px;height:1px;background:var(--red)}
+.about-title{
+  font-family:var(--font-display);
+  font-size:clamp(36px,5vw,64px);
+  line-height:1;letter-spacing:1px;
+}
+.about-title em{font-style:normal;color:var(--red)}
+.about-right{
+  display:flex;flex-direction:column;justify-content:center;gap:2rem;
+  padding-top:1rem;
+}
+.about-text{color:#aaa;font-size:1rem;line-height:1.8}
+.about-stat{display:flex;align-items:flex-end;gap:0.5rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem}
+.stat-num{font-family:var(--font-display);font-size:52px;color:var(--white);line-height:1}
+.stat-label{font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;padding-bottom:6px}
+
+/* SERVICES */
+.services{padding:7rem 3rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.services-title{font-family:var(--font-display);font-size:clamp(36px,4.5vw,58px);letter-spacing:1px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.service-card{
+  background:var(--black);
+  padding:2.5rem;
+  transition:background .3s;
+  position:relative;overflow:hidden;
+}
+.service-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.service-card:hover{background:var(--gray)}
+.service-card:hover::after{transform:scaleX(1)}
+.service-num{
+  font-family:var(--font-display);font-size:48px;
+  color:rgba(200,16,46,0.2);margin-bottom:1.5rem;
+}
+.service-title{font-size:1.1rem;font-weight:400;margin-bottom:0.8rem;letter-spacing:0.02em}
+.service-desc{font-size:0.88rem;color:var(--muted);line-height:1.7}
+
+/* CTA SECTION */
+.cta-section{
+  padding:7rem 3rem;
+  display:grid;grid-template-columns:1.5fr 1fr;
+  gap:4rem;align-items:center;
+  background:var(--gray);
+}
+.cta-title{font-family:var(--font-display);font-size:clamp(42px,6vw,80px);line-height:0.95;letter-spacing:1px}
+.cta-title span{color:var(--red)}
+.cta-right{display:flex;flex-direction:column;gap:2rem}
+.cta-text{color:#aaa;font-size:0.95rem;line-height:1.8}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,
+.contact-form textarea{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:0.85rem 1rem;
+  font-family:var(--font-body);font-size:0.9rem;
+  outline:none;transition:border-color .2s;resize:none;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{color:var(--muted)}
+.contact-form input:focus,
+.contact-form textarea:focus{border-color:var(--red)}
+
+/* FOOTER */
+footer{
+  padding:2.5rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.footer-brand{font-family:var(--font-display);letter-spacing:3px;font-size:16px;color:var(--muted)}
+.footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.2);letter-spacing:0.05em}
+.footer-dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+   Mobile, tablet and desktop
+========================= */
+img, svg, video, canvas{max-width:100%;height:auto}
+button, input, textarea{font:inherit}
+.menu-toggle{
+  display:none;
+  width:42px;height:42px;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.03);
+  cursor:pointer;
+  align-items:center;justify-content:center;
+  flex-direction:column;gap:5px;
+}
+.menu-toggle span{
+  width:18px;height:2px;background:var(--white);display:block;
+  transition:transform .25s ease,opacity .25s ease;
+}
+.menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.open span:nth-child(2){opacity:0}
+.menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.about-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+
+@media (max-width: 1180px){
+  nav{padding:1.1rem 2rem}
+  .nav-links{gap:1.6rem}
+  .hero{padding:7rem 2rem 4rem}
+  .hero-title{max-width:86%}
+  .about,.services,.cta-section{padding:5.5rem 2rem}
+  .services-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .service-card{padding:2rem}
+}
+
+@media (max-width: 900px){
+  nav{padding:1rem 1.4rem}
+  .brand{font-size:20px}
+  .nav-links{gap:1rem}
+  .nav-links a{font-size:.76rem}
+  .nav-cta{padding:.5rem 1rem;font-size:.76rem}
+  .hero{min-height:88vh;padding:7.5rem 1.4rem 3.5rem}
+  .hero-title{max-width:100%;font-size:clamp(54px,12vw,96px)}
+  .hero-number{right:1rem;font-size:clamp(110px,26vw,190px)}
+  .about{grid-template-columns:1fr;gap:2.8rem;padding:5rem 1.4rem}
+  .about-right{padding-top:0}
+  .services{padding:5rem 1.4rem}
+  .services-header{align-items:flex-start;flex-direction:column;gap:1rem;margin-bottom:2.5rem}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .cta-section{grid-template-columns:1fr;padding:5rem 1.4rem;gap:2.5rem}
+  footer{padding:2rem 1.4rem}
+}
+
+@media (max-width: 680px){
+  body{line-height:1.55}
+  nav{
+    align-items:center;
+    padding:.9rem 1rem;
+    flex-wrap:wrap;
+  }
+  .logo-box{width:34px;height:34px}
+  .brand{font-size:19px;letter-spacing:2px}
+  .menu-toggle{display:flex;margin-left:auto}
+  .nav-links{
+    order:4;
+    width:100%;
+    display:none;
+    flex-direction:column;
+    gap:0;
+    padding:.8rem 0 0;
+    border-top:1px solid rgba(255,255,255,0.08);
+    margin-top:.8rem;
+  }
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:.85rem 0;font-size:.82rem}
+  .nav-cta{display:none}
+
+  .hero{
+    min-height:100svh;
+    justify-content:center;
+    padding:6.5rem 1rem 3rem;
+  }
+  .hero-title{
+    max-width:100%;
+    font-size:clamp(48px,16vw,76px);
+    letter-spacing:1px;
+    line-height:.96;
+  }
+  .hero-sub{
+    max-width:100%;
+    font-size:.95rem;
+    margin-top:1.3rem;
+  }
+  .hero-eyebrow{font-size:.68rem;letter-spacing:.16em;margin-bottom:1rem}
+  .hero-eyebrow::before{width:22px}
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+    gap:.85rem;
+    margin-top:1.7rem;
+  }
+  .btn-primary,.btn-ghost{
+    width:100%;
+    padding:.9rem 1rem;
+    text-align:center;
+  }
+  .hero-number{right:-.4rem;top:35%;font-size:clamp(100px,45vw,170px)}
+  .hero-line{right:8%}
+
+  .strip{
+    padding:.85rem 1rem;
+    gap:1.5rem;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .strip::-webkit-scrollbar{display:none}
+
+  .about,.services,.cta-section{padding:4rem 1rem}
+  .about-title,.services-title{font-size:clamp(38px,12vw,56px)}
+  .about-text{font-size:.95rem}
+  .about-stats{gap:1rem;flex-direction:column}
+  .about-stat{width:100%;align-items:center;justify-content:space-between}
+  .stat-num{font-size:48px}
+  .stat-label{text-align:right}
+
+  .services-header{margin-bottom:2rem}
+  .services-grid{grid-template-columns:1fr}
+  .service-card{padding:1.6rem}
+  .service-num{font-size:40px;margin-bottom:1rem}
+
+  .cta-title{font-size:clamp(42px,14vw,64px);line-height:1}
+  .cta-right{gap:1.4rem}
+  .contact-form input,.contact-form textarea{width:100%;font-size:16px}
+  .contact-form .btn-primary{align-self:stretch!important}
+
+  footer{
+    flex-direction:column;
+    text-align:center;
+    gap:.9rem;
+    padding:2rem 1rem;
+  }
+}
+
+@media (max-width: 380px){
+  .hero-title{font-size:clamp(42px,15vw,58px)}
+  .brand{font-size:17px}
+  .logo-box{width:32px;height:32px}
+  .about,.services,.cta-section{padding:3.2rem .85rem}
+  .service-card{padding:1.35rem}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-area">
+    <img src="assets/Logo_opdacor.png" alt="Opdacor Logo" class="logo-image">
+    <span class="brand">OPDACOR</span>
+  </div>
+  <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contactar</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-number">O</div>
+  <p class="hero-eyebrow">Servicios profesionales</p>
+  <h1 class="hero-title">Soluciones<br>que <span>transforman</span><br>tu negocio</h1>
+  <p class="hero-sub">Opdacor ofrece servicios especializados con enfoque estratégico, rigor técnico y resultados medibles.</p>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablemos</button>
+    <button class="btn-ghost" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">Calidad comprobada</div>
+  <div class="strip-item">Enfoque estratégico</div>
+  <div class="strip-item">Equipo experto</div>
+  <div class="strip-item">Resultados medibles</div>
+  <div class="strip-item">Atención personalizada</div>
+  <div class="strip-item">Compromiso total</div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="nosotros">
+  <div class="about-left reveal">
+    <div class="section-label">Quiénes somos</div>
+    <h2 class="about-title">Precisión.<br>Estrategia.<br><em>Resultado.</em></h2>
+  </div>
+  <div class="about-right reveal">
+    <p class="about-text">En Opdacor combinamos experiencia sectorial con metodologías ágiles para entregar soluciones que generan impacto real. Nuestro equipo trabaja como una extensión de tu empresa.</p>
+    <div class="about-stats">
+      <div class="about-stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Años de<br>experiencia</span>
+      </div>
+      <div class="about-stat">
+        <span class="stat-num">150</span>
+        <span class="stat-label">Proyectos<br>completados</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="services-header reveal">
+    <h2 class="services-title">Nuestros<br>servicios</h2>
+    <div class="section-label" style="margin:0">Lo que hacemos</div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-title">Consultoría estratégica</div>
+      <p class="service-desc">Diagnóstico profundo y hoja de ruta para hacer crecer tu organización con claridad y dirección.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-title">Optimización de procesos</div>
+      <p class="service-desc">Identificamos ineficiencias y rediseñamos flujos para maximizar productividad y reducir costos.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-title">Transformación digital</div>
+      <p class="service-desc">Implementamos herramientas y culturas digitales que posicionan a tu empresa en el futuro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <div class="reveal">
+    <h2 class="cta-title">¿Listo para <span>crecer</span> juntos?</h2>
+  </div>
+  <div class="cta-right reveal">
+    <p class="cta-text">Cuéntanos sobre tu proyecto. Te respondemos en menos de 24 horas.</p>
+    <div class="contact-form">
+      <input type="text" placeholder="Tu nombre">
+      <input type="email" placeholder="Correo electrónico">
+      <textarea rows="3" placeholder="¿En qué podemos ayudarte?"></textarea>
+      <button class="btn-primary" style="align-self:flex-start">Enviar mensaje</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">OPDACOR</span>
+  <div class="footer-dot"></div>
+  <span class="footer-copy">© 2025 Opdacor — Todos los derechos reservados</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') })
+}, {threshold:0.15})
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+
+const menuToggle = document.querySelector('.menu-toggle')
+const navLinks = document.querySelector('.nav-links')
+
+if(menuToggle && navLinks){
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open')
+    menuToggle.classList.toggle('open', isOpen)
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+  })
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open')
+      menuToggle.classList.remove('open')
+      menuToggle.setAttribute('aria-expanded', 'false')
+    })
+  })
+}
+</script>
+</body>
+</html>
