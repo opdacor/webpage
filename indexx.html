@@ -37,7 +37,7 @@ nav{
   gap:0.75rem}
 
 .logo-image{
-  height: 75px;
+  height: 72px;
   width:auto;
   display:block;
   object-fit:contain;
@@ -407,11 +407,10 @@ button, input, textarea{font:inherit}
 <body>
 
 <nav>
-
-   <a href="#" class="logo-area">
+  <div class="logo-area">
     <img src="assets/Logo_opdacor.png" alt="Opdacor Logo" class="logo-image">
     <span class="brand">OPDACOR</span>
-  </a>
+  </div>
   <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
     <span></span>
     <span></span>
@@ -459,12 +458,12 @@ button, input, textarea{font:inherit}
     <p class="about-text">En Opdacor combinamos experiencia sectorial con metodologías ágiles para entregar soluciones que generan impacto real. Nuestro equipo trabaja como una extensión de tu empresa.</p>
     <div class="about-stats">
       <div class="about-stat">
-        <span class="stat-num">8+</span>
+        <span class="stat-num">10+</span>
         <span class="stat-label">Años de<br>experiencia</span>
       </div>
       <div class="about-stat">
-        <span class="stat-num">.</span>
-        <span class="stat-label">.<br>.</span>
+        <span class="stat-num">150</span>
+        <span class="stat-label">Proyectos<br>completados</span>
       </div>
     </div>
   </div>
@@ -496,62 +495,25 @@ button, input, textarea{font:inherit}
 </section>
 
 <!-- CTA -->
-<!-- CTA -->
 <section class="cta-section" id="contacto">
   <div class="reveal">
-    <h2 class="cta-title">
-      ¿Listo para <span>crecer</span> juntos?
-    </h2>
+    <h2 class="cta-title">¿Listo para <span>crecer</span> juntos?</h2>
   </div>
   <div class="cta-right reveal">
-    <p class="cta-text">
-      Cuéntanos sobre tu proyecto. 
-      Te respondemos en menos de 24 horas.
-    </p>
-    <form 
-      class="contact-form"
-      action="https://formspree.io/f/xnjwkglk"
-      method="POST"
-    >
-      <input
-        type="text"
-        name="nombre"
-        placeholder="Tu nombre"
-        required
-      >
-      <input
-        type="email"
-        name="email"
-        placeholder="Correo electrónico"
-        required
-      >
-      <textarea
-        name="mensaje"
-        rows="3"
-        placeholder="¿En qué podemos ayudarte?"
-        required
-      ></textarea>
-      <input
-        type="hidden"
-        name="_subject"
-        value="Nuevo contacto desde opdacor.com"
-      >
-      <button
-        class="btn-primary"
-        type="submit"
-        style="align-self:flex-start"
-      >
-        Enviar mensaje
-      </button>
-    </form>
+    <p class="cta-text">Cuéntanos sobre tu proyecto. Te respondemos en menos de 24 horas.</p>
+    <div class="contact-form">
+      <input type="text" placeholder="Tu nombre">
+      <input type="email" placeholder="Correo electrónico">
+      <textarea rows="3" placeholder="¿En qué podemos ayudarte?"></textarea>
+      <button class="btn-primary" style="align-self:flex-start">Enviar mensaje</button>
+    </div>
   </div>
 </section>
-
 
 <footer>
   <span class="footer-brand">OPDACOR</span>
   <div class="footer-dot"></div>
-  <span class="footer-copy">© 2026 Opdacor — Todos los derechos reservados</span>
+  <span class="footer-copy">© 2025 Opdacor — Todos los derechos reservados</span>
 </footer>
 
 <script>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Opdacor</title>
+<title>Opciones de Servicio | Opdacor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
 <style>
@@ -37,7 +37,7 @@ nav{
   gap:0.75rem}
 
 .logo-image{
-  height: 75px;
+  height: 72px;
   width:auto;
   display:block;
   object-fit:contain;
@@ -178,7 +178,7 @@ nav{
 .services{padding:7rem 3rem;border-bottom:1px solid rgba(255,255,255,0.06)}
 .services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
 .services-title{font-family:var(--font-display);font-size:clamp(36px,4.5vw,58px);letter-spacing:1px}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06)}
 .service-card{
   background:var(--black);
   padding:2.5rem;
@@ -276,7 +276,7 @@ button, input, textarea{font:inherit}
   .hero{padding:7rem 2rem 4rem}
   .hero-title{max-width:86%}
   .about,.services,.cta-section{padding:5.5rem 2rem}
-  .services-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .service-card{padding:2rem}
 }
 
@@ -402,151 +402,172 @@ button, input, textarea{font:inherit}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+/* OPCIONES DE SERVICIO */
+.options{padding:7rem 3rem;display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.06)}
+.option-card{
+  background:var(--black);padding:3rem;
+  display:grid;grid-template-columns:280px 1fr;gap:3rem;
+  position:relative;overflow:hidden;
+}
+.option-card.featured{background:var(--gray)}
+.option-card.featured::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--red)}
+.option-head{display:flex;flex-direction:column;gap:0.6rem}
+.option-num{font-family:var(--font-display);font-size:40px;color:rgba(200,16,46,0.3);line-height:1}
+.option-name{font-family:var(--font-display);font-size:clamp(26px,2.4vw,34px);letter-spacing:0.5px;line-height:1.05}
+.option-price{font-size:0.95rem;color:var(--red);letter-spacing:0.04em;margin-top:0.4rem}
+.option-badge{
+  display:inline-block;width:fit-content;
+  background:var(--red);color:#fff;font-size:0.68rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.25rem 0.6rem;margin-top:0.6rem;
+}
+.option-body{display:flex;flex-direction:column;gap:1.2rem}
+.option-tagline{color:var(--white);font-style:italic;font-size:0.95rem;opacity:0.85}
+.option-desc{color:#aaa;font-size:0.92rem;line-height:1.75}
+.option-features{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+.option-features li{
+  font-size:0.88rem;color:#ccc;line-height:1.5;
+  padding-left:1.3rem;position:relative;
+}
+.option-features li::before{content:'—';position:absolute;left:0;color:var(--red)}
+.option-cta{margin-top:0.5rem}
+
+@media (max-width:900px){
+  .options{padding:4rem 1.4rem}
+  .option-card{grid-template-columns:1fr;gap:1.5rem;padding:2rem}
+}
+
 </style>
 </head>
 <body>
 
 <nav>
-
-   <a href="#" class="logo-area">
-    <img src="assets/Logo_opdacor.png" alt="Opdacor Logo" class="logo-image">
-    <span class="brand">OPDACOR</span>
-  </a>
+  <div class="logo-area">
+    <a href="index.html" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none">
+      <img src="assets/Logo_opdacor.png" alt="Opdacor Logo" class="logo-image">
+      <span class="brand">OPDACOR</span>
+    </a>
+  </div>
   <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
     <span></span>
     <span></span>
     <span></span>
   </button>
   <ul class="nav-links">
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="index.html#nosotros">Nosotros</a></li>
+    <li><a href="index.html#servicios">Servicios</a></li>
+    <li><a href="opciones.html">Opciones</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contactar</button>
+  <button class="nav-cta" onclick="window.location.href='index.html#contacto'">Diagnóstico gratis</button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<!-- HERO OPCIONES -->
+<section class="hero" style="min-height:60vh">
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
-  <div class="hero-number">O</div>
-  <p class="hero-eyebrow">Servicios profesionales</p>
-  <h1 class="hero-title">Soluciones<br>que <span>transforman</span><br>tu negocio</h1>
-  <p class="hero-sub">Opdacor ofrece servicios especializados con enfoque estratégico, rigor técnico y resultados medibles.</p>
-  <div class="hero-actions">
-    <button class="btn-primary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablemos</button>
-    <button class="btn-ghost" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
-  </div>
+  <div class="hero-number">$</div>
+  <p class="hero-eyebrow">Opciones de servicio</p>
+  <h1 class="hero-title">Elige cómo<br>quieres <span>avanzar</span>.</h1>
+  <p class="hero-sub">Desde un diagnóstico sin costo hasta acompañamiento estratégico completo. Tú decides el ritmo — sin compromiso desde el primer paso.</p>
+  <a href="docs/propuesta-comercial-opdacor.pdf" download style="position:relative;display:inline-block;margin-top:1.2rem;color:var(--red);text-decoration:none;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase">Conoce la propuesta completa →</a>
 </section>
 
-<!-- STRIP -->
-<div class="strip">
-  <div class="strip-item">Calidad comprobada</div>
-  <div class="strip-item">Enfoque estratégico</div>
-  <div class="strip-item">Equipo experto</div>
-  <div class="strip-item">Resultados medibles</div>
-  <div class="strip-item">Atención personalizada</div>
-  <div class="strip-item">Compromiso total</div>
-</div>
+<!-- OPCIONES -->
+<section class="options" id="opciones">
 
-<!-- ABOUT -->
-<section class="about" id="nosotros">
-  <div class="about-left reveal">
-    <div class="section-label">Quiénes somos</div>
-    <h2 class="about-title">Precisión.<br>Estrategia.<br><em>Resultado.</em></h2>
-  </div>
-  <div class="about-right reveal">
-    <p class="about-text">En Opdacor combinamos experiencia sectorial con metodologías ágiles para entregar soluciones que generan impacto real. Nuestro equipo trabaja como una extensión de tu empresa.</p>
-    <div class="about-stats">
-      <div class="about-stat">
-        <span class="stat-num">8+</span>
-        <span class="stat-label">Años de<br>experiencia</span>
-      </div>
-      <div class="about-stat">
-        <span class="stat-num">.</span>
-        <span class="stat-label">.<br>.</span>
-      </div>
+  <div class="option-card reveal">
+    <div class="option-head">
+      <span class="option-num">00</span>
+      <h2 class="option-name">Diagnóstico sin costo</h2>
+      <span class="option-price">Sin costo</span>
+    </div>
+    <div class="option-body">
+      <p class="option-tagline">El primer paso, sin compromiso.</p>
+      <p class="option-desc">Antes de cualquier decisión, necesitamos entender tu situación. Realizamos una sesión presencial en tu empresa para conocer tu operación, y una sesión online para entregarte los resultados del diagnóstico con claridad.</p>
+      <ul class="option-features">
+        <li>1 sesión in situ de levantamiento de situación actual</li>
+        <li>1 sesión online de presentación de resultados</li>
+        <li>Informe ejecutivo con hallazgos y recomendaciones</li>
+        <li>Sin obligación de continuar</li>
+      </ul>
+      <button class="btn-primary option-cta" style="align-self:flex-start" onclick="window.location.href='index.html#contacto'">Agendar diagnóstico</button>
     </div>
   </div>
-</section>
 
-<!-- SERVICES -->
-<section class="services" id="servicios">
-  <div class="services-header reveal">
-    <h2 class="services-title">Nuestros<br>servicios</h2>
-    <div class="section-label" style="margin:0">Lo que hacemos</div>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <div class="service-title">Consultoría estratégica</div>
-      <p class="service-desc">Diagnóstico profundo y hoja de ruta para hacer crecer tu organización con claridad y dirección.</p>
+  <div class="option-card reveal">
+    <div class="option-head">
+      <span class="option-num">01</span>
+      <h2 class="option-name">Proyecto de orden</h2>
+      <span class="option-price">$1.200.000 — pago único</span>
     </div>
-    <div class="service-card reveal">
-      <div class="service-num">02</div>
-      <div class="service-title">Optimización de procesos</div>
-      <p class="service-desc">Identificamos ineficiencias y rediseñamos flujos para maximizar productividad y reducir costos.</p>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-num">03</div>
-      <div class="service-title">Transformación digital</div>
-      <p class="service-desc">Implementamos herramientas y culturas digitales que posicionan a tu empresa en el futuro.</p>
+    <div class="option-body">
+      <p class="option-tagline">Base para todo lo que sigue.</p>
+      <p class="option-desc">Ordenamos desde cero los datos y la administración de tu empresa. Estructuramos la información, definimos criterios, creamos las planillas y los procesos para que todo quede organizado y accesible.</p>
+      <ul class="option-features">
+        <li>Levantamiento y estructuración de datos de tu operación</li>
+        <li>Diseño de criterios y planillas de control</li>
+        <li>Definición de responsables y flujos de información</li>
+        <li>Entrega de sistema de orden listo para operar</li>
+      </ul>
+      <button class="btn-ghost option-cta" style="align-self:flex-start" onclick="window.location.href='index.html#contacto'">Conversar esta opción</button>
     </div>
   </div>
+
+  <div class="option-card featured reveal">
+    <div class="option-head">
+      <span class="option-badge">Más elegida</span>
+      <span class="option-num">02</span>
+      <h2 class="option-name">Orden + análisis mensual</h2>
+      <span class="option-price">$1.000.000 / mes</span>
+    </div>
+    <div class="option-body">
+      <p class="option-tagline">Proyecto inicial + servicio continuo.</p>
+      <p class="option-desc">Incluye el proyecto de orden (Opción 1) más un servicio mensual de análisis de datos y desarrollo de insights. Cada mes sabrás exactamente qué está pasando en tu empresa y qué decisiones tomar.</p>
+      <ul class="option-features">
+        <li>Todo lo incluido en Opción 1</li>
+        <li>Análisis mensual de datos operacionales y financieros</li>
+        <li>Desarrollo de insights accionables para tu negocio</li>
+        <li>Dashboard de indicadores actualizado semanalmente</li>
+        <li>1 reunión mensual de revisión de resultados</li>
+      </ul>
+      <button class="btn-primary option-cta" style="align-self:flex-start" onclick="window.location.href='index.html#contacto'">Conversar esta opción</button>
+    </div>
+  </div>
+
+  <div class="option-card reveal">
+    <div class="option-head">
+      <span class="option-num">03</span>
+      <h2 class="option-name">Acompañamiento estratégico</h2>
+      <span class="option-price">$1.400.000 / mes</span>
+    </div>
+    <div class="option-body">
+      <p class="option-tagline">La solución completa.</p>
+      <p class="option-desc">Incluye todo lo anterior más un análisis estratégico mensual y acompañamiento directo en la toma de decisiones. Tu empresa operando con datos, con orden y con dirección.</p>
+      <ul class="option-features">
+        <li>Todo lo incluido en Opción 2</li>
+        <li>Análisis estratégico mensual de tu operación</li>
+        <li>Acompañamiento en toma de decisiones clave</li>
+        <li>Reuniones periódicas de seguimiento y ajuste</li>
+        <li>Comunicación directa y asesoría personalizada</li>
+      </ul>
+      <button class="btn-ghost option-cta" style="align-self:flex-start" onclick="window.location.href='index.html#contacto'">Conversar esta opción</button>
+    </div>
+  </div>
+
 </section>
 
 <!-- CTA -->
-<!-- CTA -->
-<section class="cta-section" id="contacto">
+<section class="cta-section">
   <div class="reveal">
-    <h2 class="cta-title">
-      ¿Listo para <span>crecer</span> juntos?
-    </h2>
+    <h2 class="cta-title">¿Por dónde<br><span>empezamos</span>?</h2>
   </div>
   <div class="cta-right reveal">
-    <p class="cta-text">
-      Cuéntanos sobre tu proyecto. 
-      Te respondemos en menos de 24 horas.
-    </p>
-    <form 
-      class="contact-form"
-      action="https://formspree.io/f/xnjwkglk"
-      method="POST"
-    >
-      <input
-        type="text"
-        name="nombre"
-        placeholder="Tu nombre"
-        required
-      >
-      <input
-        type="email"
-        name="email"
-        placeholder="Correo electrónico"
-        required
-      >
-      <textarea
-        name="mensaje"
-        rows="3"
-        placeholder="¿En qué podemos ayudarte?"
-        required
-      ></textarea>
-      <input
-        type="hidden"
-        name="_subject"
-        value="Nuevo contacto desde opdacor.com"
-      >
-      <button
-        class="btn-primary"
-        type="submit"
-        style="align-self:flex-start"
-      >
-        Enviar mensaje
-      </button>
-    </form>
+    <p class="cta-text">Agenda tu diagnóstico sin costo. Vemos tu operación y te decimos, con honestidad, qué opción tiene más sentido para ti.</p>
+    <button class="btn-primary" style="align-self:flex-start" onclick="window.location.href='index.html#contacto'">Agendar diagnóstico</button>
+    <p style="font-size:0.78rem;color:var(--muted)">🔒 Toda la información se mantiene bajo acuerdo de confidencialidad — <a href="docs/contrato-confidencialidad-opdacor.pdf" download style="color:var(--red);text-decoration:underline">conoce cómo la protegemos</a>.</p>
   </div>
 </section>
-
 
 <footer>
   <span class="footer-brand">OPDACOR</span>
