@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -178,7 +177,7 @@ nav{
 .services{padding:7rem 3rem;border-bottom:1px solid rgba(255,255,255,0.06)}
 .services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
 .services-title{font-family:var(--font-display);font-size:clamp(36px,4.5vw,58px);letter-spacing:1px}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06)}
 .service-card{
   background:var(--black);
   padding:2.5rem;
@@ -276,7 +275,7 @@ button, input, textarea{font:inherit}
   .hero{padding:7rem 2rem 4rem}
   .hero-title{max-width:86%}
   .about,.services,.cta-section{padding:5.5rem 2rem}
-  .services-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .service-card{padding:2rem}
 }
 
@@ -407,11 +406,10 @@ button, input, textarea{font:inherit}
 <body>
 
 <nav>
-
-   <a href="#" class="logo-area">
+  <div class="logo-area">
     <img src="assets/Logo_opdacor.png" alt="Opdacor Logo" class="logo-image">
     <span class="brand">OPDACOR</span>
-  </a>
+  </div>
   <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
     <span></span>
     <span></span>
@@ -420,9 +418,10 @@ button, input, textarea{font:inherit}
   <ul class="nav-links">
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="opciones.html">Opciones</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contactar</button>
+  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Diagnóstico gratis</button>
 </nav>
 
 <!-- HERO -->
@@ -430,41 +429,52 @@ button, input, textarea{font:inherit}
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
   <div class="hero-number">O</div>
-  <p class="hero-eyebrow">Servicios profesionales</p>
-  <h1 class="hero-title">Soluciones<br>que <span>transforman</span><br>tu negocio</h1>
-  <p class="hero-sub">Opdacor ofrece servicios especializados con enfoque estratégico, rigor técnico y resultados medibles.</p>
+  <p class="hero-eyebrow">Control financiero para pymes</p>
+  <h1 class="hero-title">Tu negocio<br>trabaja. Tus <span>números</span><br>también deberían.</h1>
+  <p class="hero-sub">Opdacor ordena los números de tu empresa para que tomes decisiones con certeza, no con intuición — bajo confidencialidad desde el primer contacto.</p>
   <div class="hero-actions">
-    <button class="btn-primary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablemos</button>
-    <button class="btn-ghost" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
+    <button class="btn-primary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Agenda tu diagnóstico</button>
+    <button class="btn-ghost" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Cómo trabajamos</button>
   </div>
 </section>
 
 <!-- STRIP -->
 <div class="strip">
-  <div class="strip-item">Calidad comprobada</div>
-  <div class="strip-item">Enfoque estratégico</div>
-  <div class="strip-item">Equipo experto</div>
-  <div class="strip-item">Resultados medibles</div>
-  <div class="strip-item">Atención personalizada</div>
-  <div class="strip-item">Compromiso total</div>
+  <div class="strip-item">Confidencialidad desde el primer contacto</div>
+  <div class="strip-item">Diagnóstico inicial sin costo</div>
+  <div class="strip-item">Sin conectar tus sistemas</div>
+  <div class="strip-item">Visibilidad mensual real</div>
+  <div class="strip-item">Pensado para pymes operativas</div>
+  <div class="strip-item">Trato directo, sin intermediarios</div>
 </div>
+
+<!-- PROBLEMA -->
+<section class="about" id="problema">
+  <div class="about-left reveal">
+    <div class="section-label">El problema real</div>
+    <h2 class="about-title">Factura bien.<br>Y aun así no sabe<br><em>si está ganando.</em></h2>
+  </div>
+  <div class="about-right reveal">
+    <p class="about-text">Llega el día 1 del mes. Llegan las boletas, los sueldos, los compromisos — y la misma pregunta de siempre: ¿cuánto tengo realmente? La mayoría de los dueños construyó su empresa con esfuerzo, no con sistemas. Tienen un contador que cumple con el SII y una planilla que nadie actualiza, pero no tienen visibilidad real sobre su propio negocio.</p>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section class="about" id="nosotros">
   <div class="about-left reveal">
     <div class="section-label">Quiénes somos</div>
-    <h2 class="about-title">Precisión.<br>Estrategia.<br><em>Resultado.</em></h2>
+    <h2 class="about-title">Orden.<br>Visibilidad.<br><em>Control.</em></h2>
   </div>
   <div class="about-right reveal">
-    <p class="about-text">En Opdacor combinamos experiencia sectorial con metodologías ágiles para entregar soluciones que generan impacto real. Nuestro equipo trabaja como una extensión de tu empresa.</p>
+    <p class="about-text">Opdacor nació para ese empresario que nadie ve en los titulares: el que se levanta temprano, opera con sus manos y construyó un negocio real a puro esfuerzo. No somos un contador ni un software. Te ayudamos a desarrollar tus datos para que generen valor real en tus decisiones.</p>
     <div class="about-stats">
       <div class="about-stat">
-        <span class="stat-num">8+</span>
-        <span class="stat-label">Años de<br>experiencia</span>
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Confidencial<br>desde el día 1</span>
       </div>
       <div class="about-stat">
-        <span class="stat-num">.</span>
-        <span class="stat-label">.<br>.</span>
+        <span class="stat-num">0</span>
+        <span class="stat-label">Conexión directa<br>a tus sistemas</span>
       </div>
     </div>
   </div>
@@ -473,42 +483,48 @@ button, input, textarea{font:inherit}
 <!-- SERVICES -->
 <section class="services" id="servicios">
   <div class="services-header reveal">
-    <h2 class="services-title">Nuestros<br>servicios</h2>
-    <div class="section-label" style="margin:0">Lo que hacemos</div>
+    <h2 class="services-title">Cómo<br>trabajamos</h2>
+    <div class="section-label" style="margin:0">El proceso</div>
   </div>
   <div class="services-grid">
     <div class="service-card reveal">
       <div class="service-num">01</div>
-      <div class="service-title">Consultoría estratégica</div>
-      <p class="service-desc">Diagnóstico profundo y hoja de ruta para hacer crecer tu organización con claridad y dirección.</p>
+      <div class="service-title">Diagnóstico</div>
+      <p class="service-desc">Revisamos tu operación real: facturación, costos y flujos. Sin compromiso y sin costo.</p>
     </div>
     <div class="service-card reveal">
       <div class="service-num">02</div>
-      <div class="service-title">Optimización de procesos</div>
-      <p class="service-desc">Identificamos ineficiencias y rediseñamos flujos para maximizar productividad y reducir costos.</p>
+      <div class="service-title">Orden</div>
+      <p class="service-desc">Estructuramos tus datos financieros en un sistema simple, que tú entiendes y controlas.</p>
     </div>
     <div class="service-card reveal">
       <div class="service-num">03</div>
-      <div class="service-title">Transformación digital</div>
-      <p class="service-desc">Implementamos herramientas y culturas digitales que posicionan a tu empresa en el futuro.</p>
+      <div class="service-title">Implementación</div>
+      <p class="service-desc">Activamos controles y reportes mensuales adaptados a cómo opera realmente tu negocio.</p>
     </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <div class="service-title">Seguimiento</div>
+      <p class="service-desc">Te acompañamos mes a mes para que la visibilidad se mantenga, no se pierda.</p>
+    </div>
+  </div>
+  <div style="margin-top:2.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem">
+      <a href="docs/propuesta-comercial-opdacor.pdf" download class="btn-ghost" style="text-decoration:none;display:inline-block">Conoce la propuesta completa</a>
+      <a href="docs/contrato-confidencialidad-opdacor.pdf" download class="btn-ghost" style="text-decoration:none;display:inline-block">Así protegemos tu información</a>
+    </div>
+    <a href="opciones.html" style="color:var(--red);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase">Ver opciones y valores →</a>
   </div>
 </section>
 
 <!-- CTA -->
-<!-- CTA -->
 <section class="cta-section" id="contacto">
   <div class="reveal">
-    <h2 class="cta-title">
-      ¿Listo para <span>crecer</span> juntos?
-    </h2>
+    <h2 class="cta-title">¿Listo para <span>ordenar</span><br>tu negocio?</h2>
   </div>
   <div class="cta-right reveal">
-    <p class="cta-text">
-      Cuéntanos sobre tu proyecto. 
-      Te respondemos en menos de 24 horas.
-    </p>
-    <form 
+    <p class="cta-text">Agenda una sesión de diagnóstico sin costo. Conversamos sobre tu operación bajo acuerdo de confidencialidad desde el primer contacto — sin compromiso de continuar.</p>
+    <form
       class="contact-form"
       action="https://formspree.io/f/xnjwkglk"
       method="POST"
@@ -528,7 +544,7 @@ button, input, textarea{font:inherit}
       <textarea
         name="mensaje"
         rows="3"
-        placeholder="¿En qué podemos ayudarte?"
+        placeholder="Cuéntanos en qué etapa está tu negocio"
         required
       ></textarea>
       <input
@@ -541,18 +557,72 @@ button, input, textarea{font:inherit}
         type="submit"
         style="align-self:flex-start"
       >
-        Enviar mensaje
+        Agendar diagnóstico
       </button>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem">🔒 Toda la información se mantiene bajo acuerdo de confidencialidad — <a href="docs/contrato-confidencialidad-opdacor.pdf" download style="color:var(--red);text-decoration:underline">conoce cómo la protegemos</a>.</p>
     </form>
+
+    <div style="margin-top:1.4rem;display:flex;align-items:center;gap:0.75rem">
+      <div style="height:1px;flex:1;background:rgba(255,255,255,0.1)"></div>
+      <span style="font-size:0.72rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase">o escríbenos directamente</span>
+      <div style="height:1px;flex:1;background:rgba(255,255,255,0.1)"></div>
+    </div>
+    <a
+      href="https://wa.me/56996124810?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Opdacor."
+      target="_blank"
+      rel="noopener"
+      style="
+        margin-top:1rem;
+        display:inline-flex;
+        align-items:center;
+        gap:0.6rem;
+        background:#25D366;
+        color:#fff;
+        text-decoration:none;
+        padding:0.75rem 1.4rem;
+        font-size:0.85rem;
+        letter-spacing:0.08em;
+        text-transform:uppercase;
+        font-family:var(--font-display);
+        transition:background .2s;
+      "
+      onmouseover="this.style.background='#1ebe5d'"
+      onmouseout="this.style.background='#25D366'"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L.057 23.882a.5.5 0 0 0 .611.628l6.219-1.634A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.032-1.387l-.36-.214-3.733.981.998-3.642-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      Escríbenos por WhatsApp
+    </a>
   </div>
 </section>
-
 
 <footer>
   <span class="footer-brand">OPDACOR</span>
   <div class="footer-dot"></div>
   <span class="footer-copy">© 2026 Opdacor — Todos los derechos reservados</span>
 </footer>
+
+<a
+  href="https://wa.me/56996124810?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Opdacor."
+  target="_blank"
+  rel="noopener"
+  aria-label="Contactar por WhatsApp"
+  style="
+    position:fixed;
+    bottom:1.8rem;
+    right:1.8rem;
+    z-index:999;
+    width:54px;height:54px;
+    background:#25D366;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 16px rgba(0,0,0,0.4);
+    transition:transform .2s, background .2s;
+  "
+  onmouseover="this.style.transform='scale(1.1)';this.style.background='#1ebe5d'"
+  onmouseout="this.style.transform='scale(1)';this.style.background='#25D366'"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L.057 23.882a.5.5 0 0 0 .611.628l6.219-1.634A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.032-1.387l-.36-.214-3.733.981.998-3.642-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+</a>
 
 <script>
 const observer = new IntersectionObserver(entries => {
