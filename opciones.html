@@ -421,6 +421,13 @@ button, input, textarea{font:inherit}
   letter-spacing:0.1em;text-transform:uppercase;
   padding:0.25rem 0.6rem;margin-top:0.6rem;
 }
+.option-audience{
+  display:flex;align-items:baseline;gap:0.5rem;
+  font-size:0.8rem;color:var(--muted);
+  border-left:2px solid var(--red);padding-left:0.7rem;
+  margin-top:0.3rem;
+}
+.option-audience strong{color:var(--white);font-weight:400}
 .option-body{display:flex;flex-direction:column;gap:1.2rem}
 .option-tagline{color:var(--white);font-style:italic;font-size:0.95rem;opacity:0.85}
 .option-desc{color:#aaa;font-size:0.92rem;line-height:1.75}
@@ -435,6 +442,47 @@ button, input, textarea{font:inherit}
 @media (max-width:900px){
   .options{padding:4rem 1.4rem}
   .option-card{grid-template-columns:1fr;gap:1.5rem;padding:2rem}
+}
+
+/* COMPARISON TABLE */
+.compare{padding:5rem 3rem 0;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:5rem}
+.compare-title{font-family:var(--font-display);font-size:clamp(30px,3.6vw,46px);letter-spacing:0.5px;margin-bottom:2.5rem}
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table th,.compare-table td{
+  padding:1rem 1.2rem;text-align:left;font-size:0.85rem;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.compare-table thead th{
+  font-family:var(--font-display);font-weight:400;letter-spacing:0.5px;
+  font-size:1.05rem;color:var(--white);vertical-align:bottom;
+}
+.compare-table thead th span{display:block;font-family:var(--font-body);font-size:0.72rem;color:var(--red);margin-top:0.3rem;letter-spacing:0.04em}
+.compare-table td:first-child,.compare-table th:first-child{color:#aaa;font-size:0.82rem}
+.compare-table td{color:#ccc}
+.compare-table td.yes::before{content:'—';color:var(--red);margin-right:0.5rem}
+.compare-table td.no{color:rgba(255,255,255,0.2)}
+.compare-table tbody tr:hover{background:rgba(255,255,255,0.02)}
+.compare-table .col-featured{background:rgba(200,16,46,0.05)}
+.compare-scroll{overflow-x:auto}
+
+@media (max-width:900px){
+  .compare{padding:4rem 1.4rem}
+  .compare-table{font-size:0.78rem}
+  .compare-table th,.compare-table td{padding:0.8rem 0.7rem}
+}
+
+/* FAQ */
+.faq{padding:6rem 3rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.faq-title{font-family:var(--font-display);font-size:clamp(30px,3.6vw,46px);letter-spacing:0.5px;margin-bottom:2.5rem}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06)}
+.faq-item{background:var(--black);padding:2rem}
+.faq-q{font-size:0.98rem;color:var(--white);margin-bottom:0.7rem;display:flex;gap:0.7rem}
+.faq-q::before{content:'?';color:var(--red);font-family:var(--font-display)}
+.faq-a{font-size:0.88rem;color:var(--muted);line-height:1.7;padding-left:1.4rem}
+
+@media (max-width:900px){
+  .faq{padding:4rem 1.4rem}
+  .faq-grid{grid-template-columns:1fr}
 }
 
 </style>
@@ -473,6 +521,75 @@ button, input, textarea{font:inherit}
   <a href="docs/propuesta-comercial-opdacor.pdf" download style="position:relative;display:none;margin-top:1.2rem;color:var(--red);text-decoration:none;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase">Conoce la propuesta completa →</a>
 </section>
 
+<!-- TABLA COMPARATIVA -->
+<section class="compare reveal">
+  <h2 class="compare-title">Todo lo que incluye, <span style="color:var(--red)">de un vistazo</span>.</h2>
+  <div class="compare-scroll">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Incluye</th>
+          <th>Diagnóstico<span>00 · sin costo</span></th>
+          <th>Proyecto de orden<span>01 · $1.000.000</span></th>
+          <th class="col-featured">Orden + análisis<span>02 · $1.200.000/mes</span></th>
+          <th>Acompañamiento<span>03 · $1.400.000/mes</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Diagnóstico de tu situación actual</td>
+          <td class="yes">Sí</td>
+          <td class="yes">Sí</td>
+          <td class="yes col-featured">Sí</td>
+          <td class="yes">Sí</td>
+        </tr>
+        <tr>
+          <td>Estructuración de datos y planillas</td>
+          <td class="no">—</td>
+          <td class="yes">Sí</td>
+          <td class="yes col-featured">Sí</td>
+          <td class="yes">Sí</td>
+        </tr>
+        <tr>
+          <td>Análisis mensual de datos</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="yes col-featured">Sí</td>
+          <td class="yes">Sí</td>
+        </tr>
+        <tr>
+          <td>Dashboard de indicadores</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="yes col-featured">Sí</td>
+          <td class="yes">Sí</td>
+        </tr>
+        <tr>
+          <td>Análisis estratégico mensual</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="no col-featured">—</td>
+          <td class="yes">Sí</td>
+        </tr>
+        <tr>
+          <td>Acompañamiento en decisiones clave</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="no col-featured">—</td>
+          <td class="yes">Sí</td>
+        </tr>
+        <tr>
+          <td>Frecuencia de reuniones</td>
+          <td class="no">Única</td>
+          <td class="no">Única</td>
+          <td class="col-featured">Mensual</td>
+          <td>Periódica</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <!-- OPCIONES -->
 <section class="options" id="opciones">
 
@@ -484,6 +601,7 @@ button, input, textarea{font:inherit}
     </div>
     <div class="option-body">
       <p class="option-tagline">El primer paso, sin compromiso.</p>
+      <p class="option-audience"><strong>Para quién es:</strong> aún no sabes en qué estado están tus datos ni por dónde partir.</p>
       <p class="option-desc">Antes de cualquier decisión, necesitamos entender tu situación. Realizamos una sesión presencial en tu empresa para conocer tu operación, y una sesión online para entregarte los resultados del diagnóstico con claridad.</p>
       <ul class="option-features">
         <li>1 sesión de levantamiento de situación actual</li>
@@ -503,6 +621,7 @@ button, input, textarea{font:inherit}
     </div>
     <div class="option-body">
       <p class="option-tagline">Base para todo lo que sigue.</p>
+      <p class="option-audience"><strong>Para quién es:</strong> quieres orden de una vez, sin compromiso mensual todavía.</p>
       <p class="option-desc">Ordenamos desde cero los datos y la administración de tu empresa. Estructuramos la información, definimos criterios, creamos las planillas y los procesos para que todo quede organizado y accesible.</p>
       <ul class="option-features">
         <li>Levantamiento y estructuración de datos de tu operación</li>
@@ -523,6 +642,7 @@ button, input, textarea{font:inherit}
     </div>
     <div class="option-body">
       <p class="option-tagline">Proyecto inicial + servicio continuo.</p>
+      <p class="option-audience"><strong>Para quién es:</strong> ya no basta con ordenar una vez — necesitas saber qué pasa cada mes.</p>
       <p class="option-desc">Incluye el proyecto de orden (Opción 1) más un servicio mensual de análisis de datos y desarrollo de insights. Cada mes sabrás exactamente qué está pasando en tu empresa y qué decisiones tomar.</p>
       <ul class="option-features">
         <li>Todo lo incluido en Opción 1</li>
@@ -543,6 +663,7 @@ button, input, textarea{font:inherit}
     </div>
     <div class="option-body">
       <p class="option-tagline">La solución completa.</p>
+      <p class="option-audience"><strong>Para quién es:</strong> quieres que alguien piense contigo las decisiones, no solo que te entregue el número.</p>
       <p class="option-desc">Incluye todo lo anterior más un análisis estratégico mensual y acompañamiento directo en la toma de decisiones. Tu empresa operando con datos, con orden y con dirección.</p>
       <ul class="option-features">
         <li>Todo lo incluido en Opción 2</li>
@@ -555,6 +676,29 @@ button, input, textarea{font:inherit}
     </div>
   </div>
 
+</section>
+
+<!-- FAQ -->
+<section class="faq reveal">
+  <h2 class="faq-title">Preguntas <span style="color:var(--red)">frecuentes</span>.</h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <p class="faq-q">¿Y si no sé qué opción elegir?</p>
+      <p class="faq-a">Para eso existe el diagnóstico sin costo: revisamos tu situación juntos y te decimos, con honestidad, qué opción tiene sentido para ti — sin presionarte a la más cara.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Puedo cambiar de opción más adelante?</p>
+      <p class="faq-a">Sí. Es normal empezar por el Proyecto de orden y pasar a un plan mensual cuando el negocio lo pida, o ajustar el nivel de acompañamiento según cómo evolucione tu operación.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Esto reemplaza a mi contador?</p>
+      <p class="faq-a">No. Opdacor no hace contabilidad ni reemplaza a tu contador — ordenamos y analizamos la información de tu operación para que tomes mejores decisiones, algo que la contabilidad tradicional no cubre.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Qué pasa con la confidencialidad de mis datos?</p>
+      <p class="faq-a">Toda la información se maneja bajo acuerdo de confidencialidad firmado desde el primer contacto. Puedes revisar cómo lo protegemos en el documento disponible más abajo.</p>
+    </div>
+  </div>
 </section>
 
 <!-- CTA -->
