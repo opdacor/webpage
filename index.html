@@ -229,13 +229,49 @@ nav{
 
 /* FOOTER */
 footer{
-  padding:2.5rem 3rem;
-  display:flex;justify-content:space-between;align-items:center;
-  border-top:1px solid rgba(0,0,0,0.06);
+  border-top:1px solid rgba(0,0,0,0.08);
+  padding:4rem 3rem 2rem;
 }
-.footer-brand{font-family:var(--font-display);letter-spacing:3px;font-size:16px;color:var(--muted)}
+.footer-top{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:2.5rem;
+  padding-bottom:3rem;
+  border-bottom:1px solid rgba(0,0,0,0.08);
+}
+.footer-brand-col{}
+.footer-logo{
+  height:52px;width:auto;display:block;margin-bottom:1rem;
+}
+.footer-tagline{
+  font-size:0.82rem;color:var(--muted);line-height:1.6;max-width:220px;
+}
+.footer-col-title{
+  font-family:var(--font-display);font-size:13px;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--white);margin-bottom:1.2rem;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.7rem;}
+.footer-links a{
+  font-size:0.85rem;color:var(--muted);text-decoration:none;
+  transition:color .2s;
+}
+.footer-links a:hover{color:var(--red)}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:1.8rem;
+}
 .footer-copy{font-size:0.75rem;color:rgba(0,0,0,0.35);letter-spacing:0.05em}
+.footer-brand{font-family:var(--font-display);letter-spacing:3px;font-size:16px;color:var(--muted)}
 .footer-dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
+
+@media(max-width:860px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem;}
+  .footer-brand-col{grid-column:1/-1;}
+}
+@media(max-width:500px){
+  .footer-top{grid-template-columns:1fr;}
+  footer{padding:3rem 1.4rem 1.5rem;}
+}
 
 /* ANIMATIONS */
 @keyframes fadeUp{
@@ -601,9 +637,49 @@ button, input, textarea{font:inherit}
 </section>
 
 <footer>
-  <a href="index.html" style="text-decoration:none"><span class="footer-brand">OPDACOR</span></a>
-  <div class="footer-dot"></div>
-  <span class="footer-copy">© 2026 Opdacor — Todos los derechos reservados</span>
+  <div class="footer-top">
+
+    <!-- LOGO + TAGLINE -->
+    <div class="footer-brand-col">
+      <a href="index.html" style="text-decoration:none">
+        <img src="img/Logo_opdacor.png" alt="Opdacor" class="footer-logo">
+      </a>
+      <p class="footer-tagline">Desarrollo Estratégico de Soporte Operativo</p>
+    </div>
+
+    <!-- PRODUCTO -->
+    <div>
+      <div class="footer-col-title">Producto</div>
+      <ul class="footer-links">
+        <li><a href="#servicios">Cómo trabajamos</a></li>
+        <li><a href="opciones.html">Opciones de servicio</a></li>
+        <li><a href="#contacto">Diagnóstico gratuito</a></li>
+      </ul>
+    </div>
+
+    <!-- EMPRESA -->
+    <div>
+      <div class="footer-col-title">Empresa</div>
+      <ul class="footer-links">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- LEGAL -->
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="docs/contrato-confidencialidad-opdacor.pdf" download>Confidencialidad</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Opdacor SpA — Todos los derechos reservados</span>
+    <a href="index.html" style="text-decoration:none"><span class="footer-brand">OPDACOR</span></a>
+  </div>
 </footer>
 
 <a
