@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Opdacor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -21,7 +23,7 @@
   --font-body:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--white);font-family:var(--font-body);font-weight:300;line-height:1.6;overflow-x:hidden}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-weight:300;line-height:1.6;overflow-x:hidden;font-synthesis:none}
 
 /* NAV */
 nav{
@@ -55,6 +57,7 @@ nav{
 .nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--white)}
 .nav-cta{
+  border-radius:10px;
   background:var(--red);color:#fff;border:none;
   padding:0.55rem 1.4rem;font-family:var(--font-body);font-size:0.82rem;
   letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
@@ -64,9 +67,9 @@ nav{
 
 /* HERO */
 .hero{
-  min-height:100vh;
+  min-height:60vh;
   display:flex;flex-direction:column;justify-content:flex-end;
-  padding:10rem 20rem 10rem;
+  padding:2.5rem 20rem 1.5rem;
   position:relative;
   overflow:hidden;
 }
@@ -96,9 +99,9 @@ nav{
 .hero-title{
   position:relative;
   font-family:var(--font-display);
-  font-size:clamp(36px,5vw,67px);
+  font-size:clamp(20px,3vw,36px);
   line-height:0.92;letter-spacing:2px;
-  max-width:70%;
+  max-width:50%;
   animation:fadeUp .9s ease both;
 }
 .hero-title span{color:var(--red)}
@@ -117,6 +120,7 @@ nav{
   animation:fadeUp .9s .3s ease both;
 }
 .btn-primary{
+  border-radius:10px;
   background:var(--red);color:#fff;border:none;
   padding:0.85rem 2rem;font-family:var(--font-body);
   font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
@@ -124,6 +128,7 @@ nav{
 }
 .btn-primary:hover{background:#a50d25}
 .btn-ghost{
+  border-radius:10px;
   background:transparent;color:var(--white);
   border:1px solid rgba(0,0,0,0.25);
   padding:0.85rem 2rem;font-family:var(--font-body);
@@ -136,25 +141,38 @@ nav{
 .strip{
   border-top:1px solid rgba(0,0,0,0.08);
   border-bottom:1px solid rgba(0,0,0,0.08);
-  padding:1rem 3rem;
-  display:flex;gap:3rem;align-items:center;
+  padding:1rem 0;
   overflow:hidden;
   background:var(--gray);
+  display:flex;
+  margin-top:8rem;
+}
+.strip-track{
+  display:flex;gap:3rem;align-items:center;
+  animation:marquee 28s linear infinite;
+  will-change:transform;
+  flex-shrink:0;
+}
+.strip:hover .strip-track{animation-play-state:paused}
+@keyframes marquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
 }
 .strip-item{
   white-space:nowrap;font-size:0.75rem;letter-spacing:0.15em;
   text-transform:uppercase;color:var(--muted);
   display:flex;align-items:center;gap:0.6rem;
+  flex-shrink:0;
 }
 .strip-item::before{content:'—';color:var(--red)}
 
 /* ABOUT */
 .about{
   display:grid;grid-template-columns:1fr 1fr;
-  padding:7rem 3rem;gap:5rem;
+  padding:4rem 3rem;gap:2.1rem;
   border-bottom:1px solid rgba(0,0,0,0.06);
 }
-.about-left{padding-left:25%;}
+.about-left{padding-left:8rem;}
 .section-label{
   font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
   color:var(--red);margin-bottom:1.2rem;
@@ -163,7 +181,7 @@ nav{
 .section-label::before{content:'';width:20px;height:1px;background:var(--red)}
 .about-title{
   font-family:var(--font-display);
-  font-size:clamp(36px,5vw,64px);
+  font-size:clamp(20px,3vw,36px);
   line-height:1;letter-spacing:1px;
   text-align:left;
 }
@@ -178,13 +196,13 @@ nav{
 .stat-label{font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;padding-bottom:6px}
 
 /* SERVICES */
-.services{padding:7rem 3rem;border-bottom:1px solid rgba(0,0,0,0.06)}
-.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
-.services-title{font-family:var(--font-display);font-size:clamp(36px,4.5vw,58px);letter-spacing:1px}
+.services{padding:4rem 3rem;border-bottom:1px solid rgba(0,0,0,0.06)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;padding-left:2rem}
+.services-title{font-family:var(--font-display);font-size:clamp(20px,3vw,36px);letter-spacing:1px}
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(0,0,0,0.06)}
 .service-card{
   background:var(--black);
-  padding:2.5rem;
+  padding:1.8rem;
   transition:background .3s;
   position:relative;overflow:hidden;
 }
@@ -205,7 +223,7 @@ nav{
 
 /* CTA SECTION */
 .cta-section{
-  padding:7rem 3rem;
+  padding:4rem 3rem;
   display:grid;grid-template-columns:1.5fr 1fr;
   gap:4rem;align-items:center;
   background:var(--gray);
@@ -231,13 +249,13 @@ nav{
 /* FOOTER */
 footer{
   border-top:1px solid rgba(0,0,0,0.08);
-  padding:4rem 3rem 2rem;
+  padding:2.5rem 3rem 1.5rem;
 }
 .footer-top{
   display:grid;
   grid-template-columns:1.4fr 1fr 1fr 1fr;
   gap:2.5rem;
-  padding-bottom:3rem;
+  padding-bottom:2rem;
   border-bottom:1px solid rgba(0,0,0,0.08);
 }
 .footer-brand-col{}
@@ -272,6 +290,11 @@ footer{
 @media(max-width:500px){
   .footer-top{grid-template-columns:1fr;}
   footer{padding:3rem 1.4rem 1.5rem;}
+}
+
+/* SCROLL OFFSET - compensa nav fijo */
+#nosotros,#servicios,#contacto,#problema{
+  scroll-margin-top:80px;
 }
 
 /* ANIMATIONS */
@@ -312,9 +335,9 @@ button, input, textarea{font:inherit}
 @media (max-width: 1180px){
   nav{padding:1.1rem 2rem}
   .nav-links{gap:1.6rem}
-  .hero{padding:7rem 2rem 4rem}
+  .hero{padding:4rem 2rem 2rem}
   .hero-title{max-width:86%}
-  .about,.services,.cta-section{padding:5.5rem 2rem}
+  .about,.services,.cta-section{padding:3rem 2rem}
   .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .service-card{padding:2rem}
 }
@@ -324,14 +347,16 @@ button, input, textarea{font:inherit}
   .brand{font-size:20px}
   .nav-links{gap:1rem}
   .nav-links a{font-size:.76rem}
-  .nav-cta{padding:.5rem 1rem;font-size:.76rem}
-  .hero{min-height:88vh;padding:7.5rem 1.4rem 3.5rem}
+  .nav-cta{
+  border-radius:10px;padding:.5rem 1rem;font-size:.76rem}
+  .hero{min-height:88vh;padding:4.5rem 1.4rem 2rem}
   .hero-title{max-width:100%;font-size:clamp(54px,12vw,96px)}
   .hero-number{right:1rem;font-size:clamp(110px,26vw,190px)}
-  .about{grid-template-columns:1fr;gap:2.8rem;padding:5rem 1.4rem}
+  .about{grid-template-columns:1fr;gap:2.8rem;padding:3rem 1.4rem}
   .about-left{padding-left:0;}
+  .services-header{padding-left:0;}
   .about-right{padding-top:0}
-  .services{padding:5rem 1.4rem}
+  .services{padding:3rem 1.4rem}
   .services-header{align-items:flex-start;flex-direction:column;gap:1rem;margin-bottom:2.5rem}
   .services-grid{grid-template-columns:1fr 1fr}
   .cta-section{grid-template-columns:1fr;padding:5rem 1.4rem;gap:2.5rem}
@@ -361,7 +386,8 @@ button, input, textarea{font:inherit}
   .nav-links.open{display:flex}
   .nav-links li{width:100%}
   .nav-links a{display:block;padding:.85rem 0;font-size:.82rem}
-  .nav-cta{display:none}
+  .nav-cta{
+  border-radius:10px;display:none}
 
   .hero{
     min-height:100svh;
@@ -388,6 +414,7 @@ button, input, textarea{font:inherit}
     margin-top:1.7rem;
   }
   .btn-primary,.btn-ghost{
+  border-radius:10px;
     width:100%;
     padding:.9rem 1rem;
     text-align:center;
@@ -419,7 +446,8 @@ button, input, textarea{font:inherit}
   .cta-title{font-size:clamp(42px,14vw,64px);line-height:1}
   .cta-right{gap:1.4rem}
   .contact-form input,.contact-form textarea{width:100%;font-size:16px}
-  .contact-form .btn-primary{align-self:stretch!important}
+  .contact-form .btn-primary{
+  border-radius:10px;align-self:stretch!important}
 
   footer{
     flex-direction:column;
@@ -459,10 +487,10 @@ button, input, textarea{font:inherit}
     <span></span>
   </button>
   <ul class="nav-links">
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Servicio</a></li>
+   
     <li><a href="opciones.html">Opciones</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+
   </ul>
   <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Diagnóstico gratis</button>
 </nav>
@@ -471,10 +499,10 @@ button, input, textarea{font:inherit}
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
-  <div class="hero-number">0</div>
-  <p class="hero-eyebrow">Control de Operaciones para pymes</p>
-  <h1 class="hero-title">Tu negocio<br>trabaja. Tus <span>números</span><br>también deberían.</h1>
-  <p class="hero-sub">Opdacor ordena los números de tu empresa para que tomes decisiones con certeza, no con intuición — bajo confidencialidad desde el primer contacto.</p>
+  <div class="hero-number"></div>
+  
+  <h1 class="hero-title">Ordena la administración de tu<br>negocio y <span>recupera tiempo</span><br>para hacerla crecer.</h1>
+  <p class="hero-eyebrow"></p>
   <div class="hero-actions">
     <button class="btn-primary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Agenda tu diagnóstico</button>
     <button class="btn-ghost" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Cómo trabajamos</button>
@@ -483,19 +511,28 @@ button, input, textarea{font:inherit}
 
 <!-- STRIP -->
 <div class="strip">
-  <div class="strip-item">Confidencialidad desde el primer contacto</div>
-  <div class="strip-item">Diagnóstico inicial sin costo</div>
-  <div class="strip-item">Sin conectar tus sistemas</div>
-  <div class="strip-item">Visibilidad mensual real</div>
-  <div class="strip-item">Pensado para pymes operativas</div>
-  <div class="strip-item">Trato directo, sin intermediarios</div>
+  <div class="strip-track">
+    <div class="strip-item">Confidencialidad desde el primer contacto</div>
+    <div class="strip-item">Diagnóstico inicial sin costo</div>
+    <div class="strip-item">Sin conectar tus sistemas</div>
+    <div class="strip-item">Visibilidad mensual real</div>
+    <div class="strip-item">Pensado para pymes operativas</div>
+    <div class="strip-item">Trato directo, sin intermediarios</div>
+    <!-- Duplicado para loop infinito -->
+    <div class="strip-item">Confidencialidad desde el primer contacto</div>
+    <div class="strip-item">Diagnóstico inicial sin costo</div>
+    <div class="strip-item">Sin conectar tus sistemas</div>
+    <div class="strip-item">Visibilidad mensual real</div>
+    <div class="strip-item">Pensado para pymes operativas</div>
+    <div class="strip-item">Trato directo, sin intermediarios</div>
+  </div>
 </div>
 
 <!-- PROBLEMA -->
 <section class="about" id="problema">
   <div class="about-left reveal">
     <div class="section-label">El problema real</div>
-    <h2 class="about-title">Factura bien.<br>Y aun así no sabe<br><em>si está ganando.</em></h2>
+    <h2 class="about-title">Factura bien.<br>Y no sabe<br><em>Cuánto es el costo de operación.</em></h2>
   </div>
   <div class="about-right reveal">
     <p class="about-text">Llega el día 1 del mes. Llegan las boletas, los sueldos, los compromisos — y la misma pregunta de siempre: ¿cuánto tengo realmente? La mayoría de los dueños construyó su empresa con esfuerzo, no con sistemas. Tienen un contador que cumple con el SII y una planilla que nadie actualiza, pero no tienen visibilidad real sobre su propio negocio.</p>
@@ -505,7 +542,7 @@ button, input, textarea{font:inherit}
 <!-- ABOUT -->
 <section class="about" id="nosotros">
   <div class="about-left reveal">
-    <div class="section-label">Quiénes somos</div>
+    <div class="section-label">Qué hacemos</div>
     <h2 class="about-title">Orden.<br>Visibilidad.<br><em>Control.</em></h2>
   </div>
   <div class="about-right reveal">
@@ -543,12 +580,12 @@ button, input, textarea{font:inherit}
     <div class="service-card reveal">
       <div class="service-num">03</div>
       <div class="service-title">Implementación</div>
-      <p class="service-desc">Activamos controles y reportes mensuales adaptados a cómo opera realmente tu negocio.</p>
+      <p class="service-desc">Activamos controles y reportes semanales adaptados a cómo opera realmente tu negocio.</p>
     </div>
     <div class="service-card reveal">
       <div class="service-num">04</div>
       <div class="service-title">Seguimiento</div>
-      <p class="service-desc">Te acompañamos mes a mes para que la visibilidad se mantenga, no se pierda.</p>
+      <p class="service-desc">Te acompañamos semana a semana para que la visibilidad se mantenga, no se pierda.</p>
     </div>
   </div>
   <div style="margin-top:2.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem">
@@ -602,7 +639,7 @@ button, input, textarea{font:inherit}
       >
         Agendar diagnóstico
       </button>
-      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem">🔒 Toda la información se mantiene bajo acuerdo de confidencialidad — <a href="docs/contrato-confidencialidad-opdacor.pdf" download style="color:var(--red);text-decoration:underline">conoce cómo la protegemos</a>.</p>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem">🔒 Toda la información se mantiene bajo acuerdo de confidencialidad — 
     </form>
 
     <div style="margin-top:1.4rem;display:flex;align-items:center;gap:0.75rem">
@@ -644,7 +681,7 @@ button, input, textarea{font:inherit}
     <!-- LOGO + TAGLINE -->
     <div class="footer-brand-col">
       <a href="index.html" style="text-decoration:none">
-        <img src="img/Logo_opdacor.png" alt="Opdacor" class="footer-logo">
+        <img src="assets/img/Logo_opdacor.png" alt="Opdacor" class="footer-logo">
       </a>
       <p class="footer-tagline">Desarrollo Estratégico de Soporte Operativo</p>
     </div>
