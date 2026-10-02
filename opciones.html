@@ -26,11 +26,18 @@ body{background:var(--black);color:var(--white);font-family:var(--font-body);fon
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.4rem 3rem;
-  border-bottom:1px solid rgba(0,0,0,0.08);
-  background:rgba(250,250,248,0.92);
+  display:flex;align-items:center;
+  justify-content:flex-start;
+  padding:0.1rem 20rem;
+  border-bottom:1px solid transparent;
+  background:rgba(250,250,248,0);
   backdrop-filter:blur(12px);
+  transition:background .25s ease,border-color .25s ease;
+  gap:1rem;
+}
+nav.scrolled{
+  background:rgba(250,250,248,0.92);
+  border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
 .logo-area{
@@ -40,9 +47,10 @@ nav{
 
 .logo-image{
   height: 75px;
-  width:auto;
+  width:55px;
   display:block;
-  object-fit:contain;
+  object-fit:cover;
+  object-position:right;
 }
 .logo-box{
   width:36px;height:36px;
@@ -51,23 +59,32 @@ nav{
   font-family:var(--font-display);font-size:18px;color:#fff;letter-spacing:1px;
 }
 .brand{font-family:var(--font-display);font-size:22px;letter-spacing:3px;color:var(--white)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
+.nav-links{display:flex;gap:1.15rem;list-style:none;margin-left:0.2rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.04em;text-transform:none;transition:color .2s}
 .nav-links a:hover{color:var(--white)}
 .nav-cta{
-  border-radius:10px;
-  background:var(--red);color:#fff;border:none;
-  padding:0.55rem 1.4rem;font-family:var(--font-body);font-size:0.82rem;
-  letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
-  transition:background .2s;
+  position:absolute;right:45%;
+  border-radius:999px;
+  background:transparent;color:var(--white);
+  border:1px solid rgba(0,0,0,0.25);
+  padding:.65rem 1.25rem;font-family:var(--font-body);font-size:.78rem;
+  letter-spacing:.1em;text-transform:none;cursor:pointer;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
 }
-.nav-cta:hover{background:#a50d25}
+.nav-cta:hover{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(200,16,46,0.16);
+}
+.nav-cta:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 
 /* HERO */
 .hero{
-  min-height:100vh;
+  min-height:90vh;
   display:flex;flex-direction:column;justify-content:flex-end;
-  padding:10rem 20rem 10rem;
+  padding:9rem 20rem 9rem;
   position:relative;
   overflow:hidden;
 }
@@ -118,7 +135,7 @@ nav{
   animation:fadeUp .9s .3s ease both;
 }
 .btn-primary{
-  border-radius:10px;
+  border-radius:999px;
   background:var(--red);color:#fff;border:none;
   padding:0.85rem 2rem;font-family:var(--font-body);
   font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
@@ -126,7 +143,7 @@ nav{
 }
 .btn-primary:hover{background:#a50d25}
 .btn-ghost{
-  border-radius:10px;
+  border-radius:999px;
   background:transparent;color:var(--white);
   border:1px solid rgba(0,0,0,0.25);
   padding:0.85rem 2rem;font-family:var(--font-body);
@@ -187,7 +204,9 @@ nav{
 .service-card{
   background:var(--black);
   padding:2.5rem;
-  transition:background .3s;
+  border:1px solid transparent;
+  border-radius:8px;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
   position:relative;overflow:hidden;
 }
 .service-card::after{
@@ -196,7 +215,12 @@ nav{
   transform:scaleX(0);transform-origin:left;
   transition:transform .35s ease;
 }
-.service-card:hover{background:var(--gray)}
+.service-card:hover{
+  background:var(--gray);
+  border-color:rgba(200,16,46,0.28);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.06);
+}
 .service-card:hover::after{transform:scaleX(1)}
 .service-num{
   font-family:var(--font-display);font-size:48px;
@@ -283,7 +307,7 @@ button, input, textarea{font:inherit}
 @media (max-width: 1180px){
   nav{padding:1.1rem 2rem}
   .nav-links{gap:1.6rem}
-  .hero{padding:7rem 2rem 4rem}
+  .hero{padding:6.3rem 2rem 3.6rem}
   .hero-title{max-width:86%}
   .about,.services,.cta-section{padding:5.5rem 2rem}
   .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -295,8 +319,8 @@ button, input, textarea{font:inherit}
   .brand{font-size:20px}
   .nav-links{gap:1rem}
   .nav-links a{font-size:.76rem}
-  .nav-cta{padding:.5rem 1rem;font-size:.76rem}
-  .hero{min-height:88vh;padding:7.5rem 1.4rem 3.5rem}
+  .nav-cta{border-radius:999px;padding:.5rem 1rem;font-size:.76rem}
+  .hero{min-height:79.2vh;padding:6.75rem 1.4rem 3.15rem}
   .hero-title{max-width:100%;font-size:clamp(54px,12vw,96px)}
   .hero-number{right:1rem;font-size:clamp(110px,26vw,190px)}
   .about{grid-template-columns:1fr;gap:2.8rem;padding:5rem 1.4rem}
@@ -334,9 +358,9 @@ button, input, textarea{font:inherit}
   .nav-cta{display:none}
 
   .hero{
-    min-height:100svh;
+    min-height:90svh;
     justify-content:center;
-    padding:6.5rem 1rem 3rem;
+    padding:5.85rem 1rem 2.7rem;
   }
   .hero-title{
     max-width:100%;
@@ -418,9 +442,17 @@ button, input, textarea{font:inherit}
   background:var(--black);padding:3rem;
   display:grid;grid-template-columns:280px 1fr;gap:3rem;
   position:relative;overflow:hidden;
+  border:1px solid transparent;
+  border-radius:8px;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.option-card:hover{
+  border-color:rgba(200,16,46,0.24);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.06);
 }
 .option-card.featured{background:var(--gray)}
-.option-card.featured::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--red)}
+.option-card.featured::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--red);border-radius:8px 0 0 8px}
 .option-head{display:flex;flex-direction:column;gap:0.6rem}
 .option-num{font-family:var(--font-display);font-size:40px;color:rgba(200,16,46,0.3);line-height:1}
 .option-name{font-family:var(--font-display);font-size:clamp(26px,2.4vw,34px);letter-spacing:0.5px;line-height:1.05}
@@ -485,7 +517,17 @@ button, input, textarea{font:inherit}
 .faq{padding:6rem 3rem;border-bottom:1px solid rgba(0,0,0,0.08)}
 .faq-title{font-family:var(--font-display);font-size:clamp(30px,3.6vw,46px);letter-spacing:0.5px;margin-bottom:2.5rem}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,0.06)}
-.faq-item{background:var(--black);padding:2rem}
+.faq-item{
+  background:var(--black);padding:2rem;
+  border:1px solid transparent;
+  border-radius:8px;
+  transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.faq-item:hover{
+  border-color:rgba(200,16,46,0.24);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.06);
+}
 .faq-q{font-size:0.98rem;color:var(--white);margin-bottom:0.7rem;display:flex;gap:0.7rem}
 .faq-q::before{content:'?';color:var(--red);font-family:var(--font-display)}
 .faq-a{font-size:0.88rem;color:var(--muted);line-height:1.7;padding-left:1.4rem}
@@ -511,17 +553,15 @@ button, input, textarea{font:inherit}
     <span></span>
     <span></span>
   </button>
-  <ul class="nav-links">
+  <ul class="nav-links" style="margin-left:0;">
     <li><a href="index.html#nosotros">Servicio</a></li>
-
     <li><a href="opciones.html">Opciones</a></li>
-   
   </ul>
-  <button class="nav-cta" onclick="window.location.href='index.html#contacto'">Diagnóstico gratis</button>
+  <button class="nav-cta" onclick="window.location.href='index.html#contacto'">Test Data Driven</button>
 </nav>
 
 <!-- HERO OPCIONES -->
-<section class="hero" style="min-height:60vh">
+<section class="hero" style="min-height:54vh">
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
   <div class="hero-number"></div>
@@ -735,6 +775,16 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
 
 const menuToggle = document.querySelector('.menu-toggle')
 const navLinks = document.querySelector('.nav-links')
+const nav = document.querySelector('nav')
+
+if(nav){
+  const updateNavState = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10)
+  }
+
+  updateNavState()
+  window.addEventListener('scroll', updateNavState)
+}
 
 if(menuToggle && navLinks){
   menuToggle.addEventListener('click', () => {
