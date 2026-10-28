@@ -345,7 +345,7 @@
           <p class="fine">🔒 Toda la información se mantiene bajo acuerdo de confidencialidad.</p>
         </form>
         <div class="or">o escríbenos directamente</div>
-        <a class="wa" href="https://wa.me/56996124810?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Opdacor." target="_blank" rel="noopener"><i data-icon="whatsapp"></i>Escríbenos por WhatsApp</a>
+        <a class="wa" href="https://wa.me/56932042335?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Opdacor." target="_blank" rel="noopener"><i data-icon="whatsapp"></i>Escríbenos por WhatsApp</a>
       </div></div>
     </div>
   </section>
@@ -380,7 +380,7 @@
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/56996124810?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Opdacor." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><i data-icon="whatsappLg"></i></a>
+<a class="wa-float" href="https://wa.me/56932042335?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Opdacor." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><i data-icon="whatsappLg"></i></a>
 
 <script type="importmap">
 { "imports": {
@@ -864,6 +864,8 @@ function createScene(onReady) {
 const loader = document.getElementById('loader');
 const ldFill = document.getElementById('ldFill'), ldCount = document.getElementById('ldCount'), ldStatus = document.getElementById('ldStatus');
 let ready = false, value = 0, leaving = false, last = performance.now();
+const LOADER_EXTRA_MS = 2000; // tiempo extra de la animación de carga
+let readyAt = 0;
 
 const onDone = () => {
   control.started = true;
@@ -875,7 +877,9 @@ const onDone = () => {
 };
 const tick = (now) => {
   const dt = Math.min((now - last) / 1000, 0.05); last = now;
-  if (!ready) value += (92 - value) * 1.7 * dt;
+  // la barra avanza más lento y espera 2 s extra antes de completar el 100%
+  const canFinish = ready && now - readyAt >= LOADER_EXTRA_MS;
+  if (!canFinish) value += (92 - value) * 0.9 * dt;
   else { value += (100 - value) * 6 * dt; if (value >= 99.4) value = 100; }
   const shown = Math.min(100, Math.floor(value));
   ldFill.style.width = value + '%';
@@ -891,7 +895,7 @@ const tick = (now) => {
 };
 
 window.scrollTo(0, 0);
-createScene(() => { ready = true; });
+createScene(() => { ready = true; readyAt = performance.now(); });
 requestAnimationFrame(tick);
 </script>
 </body>
